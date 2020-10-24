@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class Patient {
 	private int id; // 연변
-	private Date date; // 확진일
+	private String date; // 확진일
 	private int patientNumber; // 환자 번호
 	private String country; // 국적
 	private String patientInformation; // 환자정보
@@ -31,11 +31,11 @@ public class Patient {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
