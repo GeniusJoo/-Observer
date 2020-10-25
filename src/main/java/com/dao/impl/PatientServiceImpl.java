@@ -149,9 +149,6 @@ public class PatientServiceImpl implements PatientService {
 		ResultSet rs = null;
 		Patient patient = null;
 		try {
-			if(conn == null){
-				return patient;
-			}
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1,id);
 			rs = ps.executeQuery();
@@ -181,11 +178,73 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public List selectByDate(String date) {
-		return null;
+		String sql = "select * from patient where date = ?";
+		List<Patient> listDate = new ArrayList<>();
+		Connection conn = DBUtil.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1,date);
+			rs = ps.executeQuery();
+			while (rs.next()){
+				Integer id = rs.getInt("id");
+				Integer patientNumber = rs.getInt("patient_number");
+				String country = rs.getString("country");
+				String local = rs.getString("local");
+				String travel = rs.getString("travel");
+				String contact = rs.getString("contact");
+				String actions = rs.getString("actions");
+				String state = rs.getString("state");
+				String route = rs.getString("route");
+				Date registrationDate = rs.getDate("registration_date");
+				Date modificationDate = rs.getDate("modification_date");
+				String exposure = rs.getString("exposure");
+				listDate.add(new Patient(id,date,patientNumber,country,local,travel,travel,
+						contact,actions,state,route,registrationDate,modificationDate,exposure));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn,ps,rs);
+		}
+		return listDate;
 	}
 
 	@Override
 	public List selectByLocal(String local) {
-		return null;
+		String sql = "select * from patient where local = ?";
+		List<Patient> listLocal = new ArrayList<>();
+		Connection conn = DBUtil.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1,local);
+			rs = ps.executeQuery();
+			while (rs.next()){
+				Integer id = rs.getInt("id");
+				String  date = rs.getString("date");
+				Integer patientNumber = rs.getInt("patient_number");
+				String country = rs.getString("country");
+				String travel = rs.getString("travel");
+				String contact = rs.getString("contact");
+				String actions = rs.getString("actions");
+				String state = rs.getString("state");
+				String route = rs.getString("route");
+				Date registrationDate = rs.getDate("registration_date");
+				Date modificationDate = rs.getDate("modification_date");
+				String exposure = rs.getString("exposure");
+				listLocal.add(new Patient(id,date,patientNumber,country,local,travel,travel,
+						contact,actions,state,route,registrationDate,modificationDate,exposure));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn,ps,rs);
+		}
+		return listLocal;
 	}
 }
