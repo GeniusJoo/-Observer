@@ -94,6 +94,7 @@ public class PatientServiceImpl implements PatientService {
 			ps.setString(4,patient.getRoute());
 			ps.setTimestamp(5,new Timestamp(patient.getModificationDate().getTime()));
 			ps.setInt(6,patient.getId());
+			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {

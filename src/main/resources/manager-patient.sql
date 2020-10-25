@@ -21,8 +21,9 @@ CREATE TABLE `patient` (
 
 DROP TABLE IF EXISTS `manager`;
 CREATE TABLE `manager` (
-`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
- `password` varchar(128) NOT NULL DEFAULT '',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL DEFAULT '',
+  `password` varchar(128) NOT NULL DEFAULT '',
 PRIMARY KEY (`id`),
 UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
