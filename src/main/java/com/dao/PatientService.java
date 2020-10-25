@@ -15,9 +15,9 @@ public interface PatientService {
 	boolean update(Patient patient);
 
 	List selectAll(); // select all
-	Patient selectById(); // select by id
-	List selectByDate(); // select by date
-	List selectByLocal(); // select by local
+	Patient selectById(int id); // select by id
+	List selectByDate(String date); // select by date
+	List selectByLocal(String local); // select by local
 
 
 
