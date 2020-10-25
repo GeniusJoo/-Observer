@@ -1,9 +1,6 @@
 package com.dao;
 
 import com.entity.Manager;
-import com.entity.Patient;
-
-import java.util.List;
 
 /**
  * Author: XianDaLi

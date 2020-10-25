@@ -5,8 +5,6 @@ import com.entity.Manager;
 import com.utils.DBUtil;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Author: XianDaLi
