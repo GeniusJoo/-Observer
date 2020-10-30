@@ -149,7 +149,7 @@ public class LoginView {
 		jFrame.getRootPane().setDefaultButton(loginBtn);
 
 		System.out.println("rootpane==contpanel:"+(jFrame.getRootPane()==jFrame.getContentPane()));
-		jFrame.setSize(800,600);
+		jFrame.setSize(600,400);
 		jFrame.setLocationRelativeTo(null);// 居中展示
 		jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		jFrame.setResizable(true);

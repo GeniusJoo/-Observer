@@ -11,7 +11,8 @@ import java.awt.event.ActionListener;
  * Date: 2020/10/25 23:54
  * Remark:
  */
-/*public class MainViewHandler implements ActionListener {
+/*
+public class MainViewHandler implements ActionListener {
 	private MainView mainView;
 	public MainViewHandler(MainView mainView) {
 		this.mainView = mainView;
@@ -59,4 +60,6 @@ import java.awt.event.ActionListener;
 			mainView.reloadTable();
 		}
 	}
-}*/
+
+}
+ */

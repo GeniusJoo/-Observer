@@ -14,16 +14,20 @@ import java.awt.*;
  * Remark:
  */
 public class MainView extends JFrame {
-/*	MainViewStudentJtable mainViewStudentJtable = new MainViewStudentJtable();
-	JButton addBtn = new JButton("增加");
-	JButton updateBtn = new JButton("修改");
-	JButton deleteBtn = new JButton("删除");
-	JTextField jTextField = new JTextField(20);
-	JButton searchBtn = new JButton("搜索");
+	/*MainViewStudentJtable mainViewStudentJtable = new MainViewStudentJtable();
+	JButton addBtn = new JButton("추가");
+	JButton updateBtn = new JButton("변화");
+	JButton deleteBtn = new JButton("삭제");
+	JTextField jTextFieldId = new JTextField(20);
+	JButton searchIdBtn = new JButton("검색ID");
+	JTextField jTextFieldDate = new JTextField(20);
+	JButton searchDateBtn = new JButton("검색Date");
+	JTextField jTextFieldLocal = new JTextField(20);
+	JButton searchLocalBtn = new JButton("검색Local");
 	JPanel northJpanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-	JButton preBtn = new JButton("上一页");
-	JButton nextBtn = new JButton("下一页");
+	JButton preBtn = new JButton("이전 페이지");
+	JButton nextBtn = new JButton("다음 페이지");
 	JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
 	private int pageNow = 1;
@@ -31,18 +35,23 @@ public class MainView extends JFrame {
 	private int totalCount = 0;
 	private MainViewHandler mainViewHandler;
 	public MainView () {
-		super("学生成绩管理系统");
+		super("Observer");
 
 		mainViewHandler = new MainViewHandler(this);
 		addBtn.addActionListener(mainViewHandler);
 		updateBtn.addActionListener(mainViewHandler);
 		deleteBtn.addActionListener(mainViewHandler);
-		searchBtn.addActionListener(mainViewHandler);
+		searchIdBtn.addActionListener(mainViewHandler);
 		northJpanel.add(addBtn);
 		northJpanel.add(updateBtn);
 		northJpanel.add(deleteBtn);
-		northJpanel.add(jTextField);
-		northJpanel.add(searchBtn);
+		northJpanel.add(jTextFieldId);
+		northJpanel.add(searchIdBtn);
+		northJpanel.add(jTextFieldDate);
+		northJpanel.add(searchDateBtn);
+		northJpanel.add(jTextFieldLocal);
+		northJpanel.add(searchLocalBtn);
+
 
 		Container contentPane = this.getContentPane();
 		contentPane.add(northJpanel,BorderLayout.NORTH);
@@ -102,7 +111,7 @@ public class MainView extends JFrame {
 		StudentRequest request = new StudentRequest();
 		request.setPageNow(pageNow);
 		request.setPageSize(pageSize);
-		request.setSearchWord(jTextField.getText().trim());
+		request.setSearchWord(jTextFieldId.getText().trim());
 		return request;
 	}
 
@@ -145,5 +154,6 @@ public class MainView extends JFrame {
 
 	public void setPageNow(int pageNow) {
 		this.pageNow = pageNow;
-	}*/
+	}
+	 */
 }
