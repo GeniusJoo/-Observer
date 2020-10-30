@@ -14,7 +14,8 @@ import java.awt.*;
  * Remark:
  */
 public class MainView extends JFrame {
-	/*MainViewStudentJtable mainViewStudentJtable = new MainViewStudentJtable();
+	/*
+	MainViewStudentJtable mainViewStudentJtable = new MainViewStudentJtable();
 	JButton addBtn = new JButton("추가");
 	JButton updateBtn = new JButton("변화");
 	JButton deleteBtn = new JButton("삭제");

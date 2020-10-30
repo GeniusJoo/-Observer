@@ -18,4 +18,7 @@ public interface PatientService {
 	List selectByDate(String date); // select by date
 	List selectByLocal(String local); // select by local
 
+	int countPatient(); // all patient
+	int countRecover(); // all Recover
+
 }

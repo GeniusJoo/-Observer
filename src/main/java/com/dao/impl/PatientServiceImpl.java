@@ -6,8 +6,9 @@ import com.utils.DBUtil;
 import sun.security.pkcs11.Secmod;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Date;
 
 /**
  * Author: XianDaLi
@@ -78,7 +79,7 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public boolean update(Patient patient) {
 		String sql = "update patient set contact=?, actions=?, state=?," +
-				" route=?,modification_date=? where id = ?";
+				" route=? where id = ?";
 		Connection conn = DBUtil.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -92,8 +93,7 @@ public class PatientServiceImpl implements PatientService {
 			ps.setString(2,patient.getActions());
 			ps.setString(3,patient.getState());
 			ps.setString(4,patient.getRoute());
-			ps.setTimestamp(5,new Timestamp(patient.getModificationDate().getTime()));
-			ps.setInt(6,patient.getId());
+			ps.setInt(5,patient.getId());
 			return ps.executeUpdate() == 1;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -128,11 +128,11 @@ public class PatientServiceImpl implements PatientService {
 				String actions = rs.getString("actions");
 				String state = rs.getString("state");
 				String route = rs.getString("route");
-				Date registrationDate = rs.getDate("registration_date");
-				Date modificationDate = rs.getDate("modification_date");
+				Timestamp registrationDate = rs.getTimestamp("registration_date");
+				Timestamp modificationDate = rs.getTimestamp("modification_date");
 				String exposure = rs.getString("exposure");
 				listAll.add(new Patient(id,date,patientNumber,country,local,travel,travel,
-						contact,actions,state,route,registrationDate,modificationDate,exposure));
+						contact,actions,state,route,new Date(registrationDate.getTime()),new Date(modificationDate.getTime()),exposure));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -163,11 +163,11 @@ public class PatientServiceImpl implements PatientService {
 				String actions = rs.getString("actions");
 				String state = rs.getString("state");
 				String route = rs.getString("route");
-				Date registrationDate = rs.getDate("registration_date");
-				Date modificationDate = rs.getDate("modification_date");
+				Timestamp registrationDate = rs.getTimestamp("registration_date");
+				Timestamp modificationDate = rs.getTimestamp("modification_date");
 				String exposure = rs.getString("exposure");
-				patient = new Patient(id, date, patientNumber, country, local, travel, travel,
-						contact, actions, state, route, registrationDate, modificationDate, exposure);
+				patient = new Patient(id,date,patientNumber,country,local,travel,travel,
+						contact,actions,state,route,new Date(registrationDate.getTime()),new Date(modificationDate.getTime()),exposure);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -184,6 +184,8 @@ public class PatientServiceImpl implements PatientService {
 		Connection conn = DBUtil.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 
 		try {
 			ps = conn.prepareStatement(sql);
@@ -199,11 +201,11 @@ public class PatientServiceImpl implements PatientService {
 				String actions = rs.getString("actions");
 				String state = rs.getString("state");
 				String route = rs.getString("route");
-				Date registrationDate = rs.getDate("registration_date");
-				Date modificationDate = rs.getDate("modification_date");
+				Timestamp registrationDate = rs.getTimestamp("registration_date");
+				Timestamp modificationDate = rs.getTimestamp("modification_date");
 				String exposure = rs.getString("exposure");
 				listDate.add(new Patient(id,date,patientNumber,country,local,travel,travel,
-						contact,actions,state,route,registrationDate,modificationDate,exposure));
+						contact,actions,state,route,new Date(registrationDate.getTime()),new Date(modificationDate.getTime()),exposure));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -235,11 +237,11 @@ public class PatientServiceImpl implements PatientService {
 				String actions = rs.getString("actions");
 				String state = rs.getString("state");
 				String route = rs.getString("route");
-				Date registrationDate = rs.getDate("registration_date");
-				Date modificationDate = rs.getDate("modification_date");
+				Timestamp registrationDate = rs.getTimestamp("registration_date");
+				Timestamp modificationDate = rs.getTimestamp("modification_date");
 				String exposure = rs.getString("exposure");
 				listLocal.add(new Patient(id,date,patientNumber,country,local,travel,travel,
-						contact,actions,state,route,registrationDate,modificationDate,exposure));
+						contact,actions,state,route,new Date(registrationDate.getTime()),new Date(modificationDate.getTime()),exposure));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -247,5 +249,47 @@ public class PatientServiceImpl implements PatientService {
 			DBUtil.close(conn,ps,rs);
 		}
 		return listLocal;
+	}
+
+	@Override
+	public int countPatient() {
+		String sql = "select count(id) as countPs from patient";
+		int res = 0;
+		Connection conn = DBUtil.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()){
+				res = rs.getInt("countPs");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn,ps,rs);
+		}
+		return res;
+	}
+
+	@Override
+	public int countRecover() {
+		String sql = "select count(id) as countRs from patient where state = '퇴원'";
+		int res = 0;
+		Connection conn = DBUtil.getConn();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()){
+				res = rs.getInt("countRs");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn,ps,rs);
+		}
+		return res;
 	}
 }

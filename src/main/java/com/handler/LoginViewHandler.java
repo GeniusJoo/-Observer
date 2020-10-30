@@ -28,9 +28,9 @@ public class LoginViewHandler extends KeyAdapter implements ActionListener {
 		System.out.println(111);
 		JButton jButton = (JButton) e.getSource();
 		String text = jButton.getText();
-		if ("登录".equals(text)) {
+		if ("Login".equals(text)) {
 			login();
-		}else if ("重置".equals(text)) {
+		}else if ("Reset".equals(text)) {
 			loginView.getUserNameJTextField().setText("");
 			loginView.getPwdJPasswordField().setText("");
 		}
@@ -50,7 +50,7 @@ public class LoginViewHandler extends KeyAdapter implements ActionListener {
 			new MainView();
 			loginView.getjFrame().dispose();
 		} else {
-			JOptionPane.showMessageDialog(loginView.getjFrame(), "密码错误");
+			JOptionPane.showMessageDialog(loginView.getjFrame(), "password is wrong!");
 		}
 	}
 

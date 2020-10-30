@@ -11,8 +11,8 @@ CREATE TABLE `patient` (
   `actions` varchar(50) DEFAULT NULL,
   `state` varchar(50) DEFAULT NULL,
   `route` varchar(50) DEFAULT NULL,
-  `registration_date` datetime DEFAULT NULL,
-  `modification_date` datetime DEFAULT NULL,
+  `registration_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `modification_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `exposure` char(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `patient_number` (`patient_number`)
