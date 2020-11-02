@@ -1,4 +1,6 @@
-package com.roadjava;
+package com;
+
+import com.view.LoginView;
 
 /**
  * Author: XianDaLi
@@ -7,6 +9,6 @@ package com.roadjava;
  */
 public class App {
 	public static void main(String[] args) {
-
+		new LoginView();
 	}
 }

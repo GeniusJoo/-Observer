@@ -30,6 +30,38 @@ public class DBUtil {
 		return null;
 	}
 
+	/*
+	关闭资源
+	@param conn 连接对象
+	@param ps   数据库操作对象
+	@param rs   结果集
+ */
+	public static void close(Connection conn, PreparedStatement ps, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (ps != null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (rs != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public static void closeResultSet(ResultSet resultSet) {
 		try {
 			if (resultSet != null) {

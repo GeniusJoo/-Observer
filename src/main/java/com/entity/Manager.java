@@ -13,9 +13,10 @@ public class Manager {
 	public Manager() {
 	}
 
-	public Manager(String name) {
+	public Manager(int id, String name, String password) {
+		this.id = id;
 		this.name = name;
-		this.password = "";
+		this.password = password;
 	}
 
 	public int getId() {

@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class Patient {
 	private int id; // 연변
-	private Date date; // 확진일
+	private String date; // 확진일
 	private int patientNumber; // 환자 번호
 	private String country; // 국적
 	private String patientInformation; // 환자정보
@@ -23,6 +23,7 @@ public class Patient {
 	private Date modificationDate; // 수정일
 	private String exposure; // 노출여부
 
+
 	public int getId() {
 		return id;
 	}
@@ -31,11 +32,11 @@ public class Patient {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -132,6 +133,29 @@ public class Patient {
 	}
 
 	public void setExposure(String exposure) {
+		this.exposure = exposure;
+	}
+
+	public Patient() {
+	}
+
+	public Patient(int id, String date, int patientNumber, String country,
+	               String patientInformation, String local, String travel,
+	               String contact, String actions, String state, String route,
+	               Date registrationDate, Date modificationDate, String exposure) {
+		this.id = id;
+		this.date = date;
+		this.patientNumber = patientNumber;
+		this.country = country;
+		this.patientInformation = patientInformation;
+		this.local = local;
+		this.travel = travel;
+		this.contact = contact;
+		this.actions = actions;
+		this.state = state;
+		this.route = route;
+		this.registrationDate = registrationDate;
+		this.modificationDate = modificationDate;
 		this.exposure = exposure;
 	}
 }
