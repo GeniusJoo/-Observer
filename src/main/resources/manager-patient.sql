@@ -29,3 +29,16 @@ UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 # Insert an admin for login
 insert into manager(name,password) values('admin','123456');
+
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `comment_id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `comment_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `text` text NOT NULL,
+  `state` char(10) NOT NULL,
+  PRIMARY KEY (`comment_id`),
+  KEY `comment_id` (`comment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

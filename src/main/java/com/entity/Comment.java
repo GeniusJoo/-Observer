@@ -15,6 +15,18 @@ public class Comment {
 	private String text;
 	private String userState;
 
+	public Comment() {
+	}
+
+	public Comment(int commentId, int userId, String username, Date commentDate, String text, String userState) {
+		this.commentId = commentId;
+		this.userId = userId;
+		this.username = username;
+		this.commentDate = commentDate;
+		this.text = text;
+		this.userState = userState;
+	}
+
 	public String getUsername() {
 		return username;
 	}
