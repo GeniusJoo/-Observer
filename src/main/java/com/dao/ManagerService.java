@@ -12,6 +12,4 @@ public interface ManagerService {
 	boolean deleteUser(int id);
 	boolean updateUser(Manager manager);
 	boolean login(Manager manager);
-//	List selectAllUser(); // select all
-
 }

@@ -29,7 +29,8 @@ public class PatientServiceImpl implements PatientService {
 
 		try {
 			if(conn == null){
-				return false;
+
+ 				return false;
 			}
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,patient.getDate());
