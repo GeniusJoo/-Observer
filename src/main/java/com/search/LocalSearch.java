@@ -23,7 +23,8 @@ public class LocalSearch extends JFrame {
 		private JPanel contentPane;
 		private JTextField textField;
 		private JTable table;
-
+		
+			
 		public LocalSearch() {
 			setTitle("지역 검색");
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,18 +46,16 @@ public class LocalSearch extends JFrame {
 			Container c = getContentPane();
 			
 			String[] korea = {"대한민국", "서울", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"};
-//			ImageIcon[] koreaImage = {new ImageIcon("koreaimages/남한 사진.PNG"), new ImageIcon("koreaimages/서울.PNG"),
-//					new ImageIcon("koreaimages/경기도.PNG"), new ImageIcon("koreaimages/강원도.PNG"), new ImageIcon("koreaimages/충청북도.PNG"), 
-//					new ImageIcon("koreaimages/충청남도.PNG"), new ImageIcon("koreaimages/전라북도.PNG"), new ImageIcon("koreaimages/전라남도.PNG"),
-//					new ImageIcon("koreaimages/경상북도.PNG"), new ImageIcon("koreaimages/경상남도.PNG"), new ImageIcon("koreaimages/제주도.PNG") 
+//			final ImageIcon[] koreaImage = {new ImageIcon("koreaimages/남한 사진.jpg"), new ImageIcon("koreaimages/서울.jpg"),
+//					new ImageIcon("koreaimages/경기도.jpg"), new ImageIcon("koreaimages/강원도.jpg"), new ImageIcon("koreaimages/충청북도.jpg"), 
+//					new ImageIcon("koreaimages/충청남도.jpg"), new ImageIcon("koreaimages/전라북도.jpg"), new ImageIcon("koreaimages/전라남도.jpg"),
+//					new ImageIcon("koreaimages/경상북도.jpg"), new ImageIcon("koreaimages/경상남도.jpg"), new ImageIcon("koreaimages/제주도.jpg") 
 //					};
-//			JLabel koreaImageLabel = new JLabel(koreaImage[0]);
+//			final JLabel koreaImageLabel = new JLabel(koreaImage[0]);
 			
 			JComboBox SearchLocalComboBox = new JComboBox(korea);
 		
 //			SearchLocalComboBox.addActionListener(new ActionListener() {
-//				
-//				@Override
 //				public void actionPerformed(ActionEvent e) {
 //					JComboBox findComboBox = (JComboBox)e.getSource();
 //					int index = findComboBox.getSelectedIndex();
