@@ -45,5 +45,6 @@ public class JframeTest extends JFrame{
 
 	public static void main(String[] args) {
 		new JframeTest();
+		System.out.println("dasd");
 	}
 }
