@@ -45,7 +45,7 @@ public class LocalSearch extends JFrame {
 			
 			Container c = getContentPane();
 			
-			String[] korea = {"대한민국", "서울", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"};
+			String[] korea = {"서울 시", "서울", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"};
 //			final ImageIcon[] koreaImage = {new ImageIcon("koreaimages/남한 사진.jpg"), new ImageIcon("koreaimages/서울.jpg"),
 //					new ImageIcon("koreaimages/경기도.jpg"), new ImageIcon("koreaimages/강원도.jpg"), new ImageIcon("koreaimages/충청북도.jpg"), 
 //					new ImageIcon("koreaimages/충청남도.jpg"), new ImageIcon("koreaimages/전라북도.jpg"), new ImageIcon("koreaimages/전라남도.jpg"),
