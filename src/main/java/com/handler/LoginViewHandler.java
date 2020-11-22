@@ -37,17 +37,7 @@ public class LoginViewHandler extends KeyAdapter implements ActionListener {
 	}
 
 	private void login() {
-//		String name = loginView.getUserNameJTextField().getText();
-//		String password = loginView.getPwdJPasswordField().getText();
-//		LoginEvent le = LoginEvent.getInstance();
-//		
-//		int result = le.findUserIDandPassword(name, password);
-//		if(result == 1) {
-//			JOptionPane.showMessageDialog(null, "로그인 성공!");
-//		} else {
-//			JOptionPane.showMessageDialog(null, "로그인 실패");
-//		}
-//	}
+
 		String userName = loginView.getUserNameJTextField().getText();
 		char[] password = loginView.getPwdJPasswordField().getPassword();
 		String pwd = new String(password);
@@ -58,8 +48,11 @@ public class LoginViewHandler extends KeyAdapter implements ActionListener {
 		manager.setPassword(pwd);
 		boolean flag = managerService.login(manager);
 		if (flag) {
-			new menu();
+//			new menu();
+			menu me = new menu();
+			me.setVisible(true);
 			loginView.getjFrame().dispose();
+			
 		} else {
 			JOptionPane.showMessageDialog(loginView.getjFrame(), "password is wrong!");
 		}

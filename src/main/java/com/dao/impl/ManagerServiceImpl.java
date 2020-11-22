@@ -14,7 +14,8 @@ import java.sql.*;
 public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public boolean addUser(Manager manager) {
-		String sql = "insert into manager(name,password) values(?,?)";
+//		String sql = "insert into manager(name,password) values(?,?)";
+		String sql = "insert into user(name,password) values(?,?)";
 		Connection conn = DBUtil.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -37,7 +38,8 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Override
 	public boolean deleteUser(int id) {
-		String sql = "delete from manager where id = ?";
+//		String sql = "delete from manager where id = ?";
+		String sql = "delete from user where id = ?";
 		Connection conn = DBUtil.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -59,7 +61,8 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Override
 	public boolean updateUser(Manager manager) {
-		String sql = "update manager set password = ? where id = ?";
+//		String sql = "update manager set password = ? where id = ?";
+		String sql = "update user set password = ? where id = ?";
 		Connection conn = DBUtil.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -79,7 +82,8 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Override
 	public boolean login(Manager manager) {
-		String sql = "select password from manager where name = ?";
+//		String sql = "select password from manager where name = ?";
+		String sql = "select password from user where name = ?";
 		Connection conn = DBUtil.getConn();
 		PreparedStatement ps = null;
 		ResultSet rs = null;

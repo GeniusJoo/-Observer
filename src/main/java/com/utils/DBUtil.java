@@ -2,17 +2,26 @@ package com.utils;
 
 import java.sql.*;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  * Author: XianDaLi
  * Date: 2020/10/17 18:37
  * Remark:
  */
 public class DBUtil {
-	private static final String URL = "jdbc:mysql://localhost:3306/teamwork?useUnicode=true&characterEncoding=utf8&useSSL=false";
-	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String USER_NAME = "root";
-	private static final String PWD = "123";
+//	private static final String URL = "jdbc:mysql://localhost:3306/teamwork?useUnicode=true&characterEncoding=utf8&useSSL=false";
+//	private static final String DRIVER = "com.mysql.jdbc.Driver";
+//	private static final String USER_NAME = "root";
+//	private static final String PWD = "123";
+	
+	// 익강님과 커넥터 버젼이 맞지 않고, db도 개인이 돌리기 때문에 저는 아래거로 사용하겠습니다.
 
+	public static final String URL = "jdbc:mysql://127.0.0.1:3306/Observer?serverTimezone=UTC";
+	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+	public static final String USER_NAME = "root";
+	public static final String PWD = "wldnjs203";
+	
 	static {
 		try {
 			Class.forName(DRIVER);
@@ -93,4 +102,5 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 	}
+	
 }
