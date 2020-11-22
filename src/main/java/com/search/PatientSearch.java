@@ -27,10 +27,6 @@ public class PatientSearch extends JFrame {
     private JTextField textField;
     private JTable table;
     private JButton back;
-    private menu me;
-    private LocalSearch lc;
-    private DateSearch ds;
-    private static PatientSearch pa = new PatientSearch();
 
     /**
      * Create the frame.
@@ -67,7 +63,7 @@ public class PatientSearch extends JFrame {
         back.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				pa.dispose();
+				dispose();
 			}
 		});
 	
@@ -91,6 +87,7 @@ public class PatientSearch extends JFrame {
     
 
      public static void main(String[] args) {
-    	 pa.setVisible(true);
+    	 PatientSearch frame = new PatientSearch();
+    	 frame.setVisible(true);
      }
 }

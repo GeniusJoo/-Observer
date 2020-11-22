@@ -3,9 +3,8 @@ package com.handler;
 import com.dao.ManagerService;
 import com.dao.impl.ManagerServiceImpl;
 import com.entity.Manager;
-import com.event.LoginEvent;
+import com.main.menu;
 import com.view.LoginView;
-import com.view.MainView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -59,7 +58,7 @@ public class LoginViewHandler extends KeyAdapter implements ActionListener {
 		manager.setPassword(pwd);
 		boolean flag = managerService.login(manager);
 		if (flag) {
-			new MainView();
+			new menu();
 			loginView.getjFrame().dispose();
 		} else {
 			JOptionPane.showMessageDialog(loginView.getjFrame(), "password is wrong!");

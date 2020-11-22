@@ -20,10 +20,6 @@ public class menu extends JFrame implements ActionListener	{
 
 	CardLayout layout;	//ī�巹�̾ƿ����� �ֱ��ȭ��, �ΰ���� ȭ�� ��ȯ���� 
 	
-	private LocalSearch localS;
-	private DateSearch dateS;
-	private PatientSearch patientS;
-	
 	private JButton area = new JButton();
 	private JButton date = new JButton();
 	private JButton search = new JButton();
@@ -31,6 +27,7 @@ public class menu extends JFrame implements ActionListener	{
 	private JPanel first = new JPanel(new BorderLayout());
 	private JPanel fuction = new JPanel(new FlowLayout());
 	private static menu me = new menu();
+
 
 	public menu()
 	{
@@ -84,10 +81,7 @@ public class menu extends JFrame implements ActionListener	{
 		
 		setMainmenu();	//메인기능 화면 구성 추가
 		setSubmenu();	//서브기능 화면 구성 추가
-		ButtonEvent();
-//		AreaEvent();	
-//		LocalEvent();
-//		DateEvent();
+
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//종료 셋팅
 		setSize(890,550);	//절대 크기 조절 이미지 파일 때문에 필수
@@ -138,8 +132,22 @@ public class menu extends JFrame implements ActionListener	{
 
 		date = new JButton("", img2);
 		
+		date.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LocalSearch();	
+			}
+		});
+		
 		
 		search = new JButton("", img3);
+		
+		search.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new DateSearch();	
+			}
+		});
 		
 		
 		//부가기능 화면 전환 버튼 추가
@@ -203,37 +211,7 @@ public class menu extends JFrame implements ActionListener	{
 		add("1",second);
 		
 	}
-	
-	public void ButtonEvent() {
-			}
-//	
-//	public void AreaEvent() { // 이벤트 처리 메소드 지금 이미지와 변수명이 달라 일단 이미지 명에 변수명을 맞춤 area가 지역이 아님.
-//		area.addMouseListener(new MouseAdapter() {
-//			@Override public void mousePressed(MouseEvent e) {
-//				patientS.setVisible(true);
-//			}
-//		});	
-//	}
-//		
-//	public void LocalEvent() {
-//		date.addMouseListener(new MouseAdapter() {
-//			@Override public void mousePressed(MouseEvent e) {
-//				localS.setVisible(true);
-//
-//			}
-//		});	
-//	}
-//	
-//	public void DateEvent() {
-//		search.addMouseListener(new MouseAdapter() {
-//			@Override public void mousePressed(MouseEvent e) {
-//				dateS.setVisible(true);
-//
-//			}
-//		});	
-//	}
-//	
-	
+
 	
 	public static void main(String[] args)	//실행 코드
 	{

@@ -14,6 +14,8 @@ import com.main.menu;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -23,10 +25,7 @@ public class DateSearch extends JFrame {
 	private JTextField textField;
 	private JTable table;
 	private JButton back;
-	private static DateSearch ds = new DateSearch();
-	private menu me;
-	private LocalSearch lc;
-	
+
 	/**
 	 * Create the frame.
 	 */
@@ -54,6 +53,14 @@ public class DateSearch extends JFrame {
 		contentPane.add(scrollPane);
 		
 		back = new JButton("back");
+		
+		back.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		
 	    back.setBounds(800, 38, 70, 40);
 	    contentPane.add(back);
 		
@@ -71,21 +78,15 @@ public class DateSearch extends JFrame {
 		lblNewLabel.setFont(new Font("함초롬돋움", Font.BOLD, 30));
 		lblNewLabel.setBounds(119, 27, 151, 70);
 		contentPane.add(lblNewLabel);
-		BackEvent();
+		
+		setVisible(true);
+
 	}
 	
-	public void BackEvent() {
-		back.addMouseListener(new MouseAdapter() {
-			@Override public void mousePressed(MouseEvent e) {
-				ds.setVisible(false);
-				me = new menu();
-				me.setVisible(true);
-				
-			}
-		});	
-	}
+
 	
 	 public static void main(String[] args) {
-		 ds.setVisible(true);
+		 DateSearch frame = new DateSearch();
+		 frame.setVisible(true);
      }
 }

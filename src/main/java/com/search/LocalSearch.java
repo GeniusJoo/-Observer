@@ -29,10 +29,7 @@ public class LocalSearch extends JFrame {
 		private JTextField textField;
 		private JTable table;
 		private JButton back;
-		private static LocalSearch lc = new LocalSearch();
-		private menu me;
-		private DateSearch ds;
-			
+	
 		public LocalSearch() {
 			setTitle("지역 검색");
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +50,7 @@ public class LocalSearch extends JFrame {
 			
 			Container c = getContentPane();
 			
-			String[] korea = {"서울 시", "서울", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"};
+			String[] korea = {"", "", "", "", "", "", "", "", "", "", ""};
 //			final ImageIcon[] koreaImage = {new ImageIcon("koreaimages/남한 사진.jpg"), new ImageIcon("koreaimages/서울.jpg"),
 //					new ImageIcon("koreaimages/경기도.jpg"), new ImageIcon("koreaimages/강원도.jpg"), new ImageIcon("koreaimages/충청북도.jpg"), 
 //					new ImageIcon("koreaimages/충청남도.jpg"), new ImageIcon("koreaimages/전라북도.jpg"), new ImageIcon("koreaimages/전라남도.jpg"),
@@ -104,13 +101,15 @@ public class LocalSearch extends JFrame {
 			back.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					lc.dispose();
+					dispose();
 				}
 			});
+			setVisible(true);
 		}
 		
 		
 		 public static void main(String[] args) {
-			 lc.setVisible(true);
+			 LocalSearch frame = new LocalSearch();
+			 frame.setVisible(true);
 	     }
 	}
