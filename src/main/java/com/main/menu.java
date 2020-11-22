@@ -1,11 +1,38 @@
 package com.main;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import com.search.DateSearch;
+import com.search.LocalSearch;
+import com.search.PatientSearch;
+
 public class menu extends JFrame implements ActionListener	{
+
 	CardLayout layout;	//ī�巹�̾ƿ����� �ֱ��ȭ��, �ΰ���� ȭ�� ��ȯ���� 
-	menu()
+	
+	private LocalSearch localS;
+	private DateSearch dateS;
+	private PatientSearch patientS;
+	
+	private JButton area = new JButton();
+	private JButton date = new JButton();
+	private JButton search = new JButton();
+	
+	private JPanel first = new JPanel(new BorderLayout());
+	private JPanel fuction = new JPanel(new FlowLayout());
+	private static menu me = new menu();
+
+	public menu()
 	{
 
 		setTitle("메뉴판");	//프레임 이름 메뉴판 설정
@@ -57,10 +84,14 @@ public class menu extends JFrame implements ActionListener	{
 		
 		setMainmenu();	//메인기능 화면 구성 추가
 		setSubmenu();	//서브기능 화면 구성 추가
+		ButtonEvent();
+//		AreaEvent();	
+//		LocalEvent();
+//		DateEvent();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//종료 셋팅
 		setSize(890,550);	//절대 크기 조절 이미지 파일 때문에 필수
-		setVisible(true);	//항상 보여질 것 
+//		setVisible(true);	//항상 보여질 것 
 	}
 	public void actionPerformed(ActionEvent e) //메뉴 클릭시 반응 리스너 설정 메뉴판 기능을 사용하지 않으니 필요없음
 	{
@@ -88,18 +119,29 @@ public class menu extends JFrame implements ActionListener	{
 		}
 	}
 	
-	void setMainmenu() 	//메인기능 화면 구성 메소드
+	public void setMainmenu() 	//메인기능 화면 구성 메소드
 	{
-		JPanel first = new JPanel(new BorderLayout());
-		JPanel fuction = new JPanel(new FlowLayout());
+
 		//이미지 경로표시 절대좌표 재설정해야함!! 중요
 		ImageIcon img1 = new ImageIcon("koreaimages/지역.png");
 		ImageIcon img2 = new ImageIcon("koreaimages/날짜.png");
 		ImageIcon img3 = new ImageIcon("koreaimages/검색.png");
 		//주기능 이미지 버튼 추가
-		JButton area = new JButton("", img1);
-		JButton date = new JButton("", img2);
-		JButton search = new JButton("", img3);
+		area = new JButton("", img1);
+		
+		area.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new PatientSearch();	
+			}
+		});
+
+		date = new JButton("", img2);
+		
+		
+		search = new JButton("", img3);
+		
+		
 		//부가기능 화면 전환 버튼 추가
 		JButton nextButton = new JButton("부가기능");
 		//부가기능 화면 전환시 리스너를 통해 화면 전환
@@ -111,6 +153,7 @@ public class menu extends JFrame implements ActionListener	{
 		};
 		nextButton.addActionListener(listener1);
 		//주기능 이미지 버튼 패널에 장착
+		getContentPane().add(area);
 		fuction.add(area);
 		fuction.add(date);
 		fuction.add(search);
@@ -120,6 +163,8 @@ public class menu extends JFrame implements ActionListener	{
 		first.add(nextButton, "South");
 		//완성된 first패널 프레임 0번에 장착
 		add("0",first);
+		
+
 	}
 	void setSubmenu() //부가기능 화면 구성 메소드
 	{
@@ -156,10 +201,44 @@ public class menu extends JFrame implements ActionListener	{
 		second.add(previousButton, "South");
 		//완성된 second 프레임 1번에 부착
 		add("1",second);
+		
 	}
+	
+	public void ButtonEvent() {
+			}
+//	
+//	public void AreaEvent() { // 이벤트 처리 메소드 지금 이미지와 변수명이 달라 일단 이미지 명에 변수명을 맞춤 area가 지역이 아님.
+//		area.addMouseListener(new MouseAdapter() {
+//			@Override public void mousePressed(MouseEvent e) {
+//				patientS.setVisible(true);
+//			}
+//		});	
+//	}
+//		
+//	public void LocalEvent() {
+//		date.addMouseListener(new MouseAdapter() {
+//			@Override public void mousePressed(MouseEvent e) {
+//				localS.setVisible(true);
+//
+//			}
+//		});	
+//	}
+//	
+//	public void DateEvent() {
+//		search.addMouseListener(new MouseAdapter() {
+//			@Override public void mousePressed(MouseEvent e) {
+//				dateS.setVisible(true);
+//
+//			}
+//		});	
+//	}
+//	
+	
+	
 	public static void main(String[] args)	//실행 코드
 	{
-		new menu();
+		me.setVisible(true);
+		
 	}
 }
 

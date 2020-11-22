@@ -1,9 +1,9 @@
 package com.handler;
 
 import com.dao.ManagerService;
-import com.dao.impl.LoginEvent;
 import com.dao.impl.ManagerServiceImpl;
 import com.entity.Manager;
+import com.event.LoginEvent;
 import com.view.LoginView;
 import com.view.MainView;
 

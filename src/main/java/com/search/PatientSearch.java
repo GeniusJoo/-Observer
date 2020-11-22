@@ -8,6 +8,10 @@ import javax.swing.JTextField;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,11 +19,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import com.main.menu;
+
 public class PatientSearch extends JFrame {
 
     private JPanel contentPane;
     private JTextField textField;
     private JTable table;
+    private JButton back;
+    private menu me;
+    private LocalSearch lc;
+    private DateSearch ds;
+    private static PatientSearch pa = new PatientSearch();
 
     /**
      * Create the frame.
@@ -50,6 +61,18 @@ public class PatientSearch extends JFrame {
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(14, 124, 947, 551);
         contentPane.add(scrollPane);
+        
+        back = new JButton("back");
+        
+        back.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pa.dispose();
+			}
+		});
+	
+        back.setBounds(800, 38, 70, 40);
+        getContentPane().add(back);
 
         table = new JTable();
         
@@ -60,10 +83,14 @@ public class PatientSearch extends JFrame {
                 "연번", "확진일", "환자번호", "국적", "환자정보", " 지역", "여행력", "접촉력","조치사항","상태","이동경로","등록일","수정번호","노출여부"
             }
         ));
-        scrollPane.setViewportView(table);
+        scrollPane.setViewportView(table);  
+        setVisible(true);
+        
     }
+  
+    
+
      public static void main(String[] args) {
-    	 PatientSearch frame = new PatientSearch();
-        frame.setVisible(true);
+    	 pa.setVisible(true);
      }
 }
