@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 public class menu extends JFrame implements ActionListener	{
 	CardLayout layout;	//ī�巹�̾ƿ����� �ֱ��ȭ��, �ΰ���� ȭ�� ��ȯ���� 
-	menu()
+	public menu()
 	{
 
 		setTitle("메뉴판");	//프레임 이름 메뉴판 설정

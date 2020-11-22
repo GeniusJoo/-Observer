@@ -8,10 +8,10 @@ import java.sql.*;
  * Remark:
  */
 public class DBUtil {
-	private static final String URL = "jdbc:mysql://127.0.0.1:3306/Observer?characterEncoding=UTF-8&serverTimezone=UTC";
-	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+	private static final String URL = "jdbc:mysql://localhost:3306/teamwork?useUnicode=true&characterEncoding=utf8&useSSL=false";
+	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	private static final String USER_NAME = "root";
-	private static final String PWD = "wldnjs203";
+	private static final String PWD = "123";
 
 	static {
 		try {
@@ -22,9 +22,9 @@ public class DBUtil {
 	}
 
 	public static Connection getConn() {
-		try (Connection con = DriverManager.getConnection(URL,USER_NAME,PWD)) {
+		try {
 			System.out.println("DB 연동 성공");
-			System.out.println(con);
+			return DriverManager.getConnection(URL,USER_NAME,PWD);
 		} catch (Exception e) {
 			System.out.println("DB 연동 실패");
 			e.printStackTrace();
