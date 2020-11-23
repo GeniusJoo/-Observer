@@ -37,7 +37,6 @@ public class DateSearch extends JFrame implements ActionListener{
     private JButton back;
     private JTextArea area;
     
-    ArrayList<String> list = new ArrayList<>(); 
 
     Connection conn;
 	Statement st;
@@ -57,7 +56,7 @@ public class DateSearch extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-	    JLabel lblNewLabel = new JLabel("D A T A");
+	    JLabel lblNewLabel = new JLabel("D A T E");
 	    lblNewLabel.setFont(new Font("함초롬돋움", Font.BOLD, 30));
 	    lblNewLabel.setBounds(119, 27, 151, 70);
 	    contentPane.add(lblNewLabel);
@@ -70,9 +69,15 @@ public class DateSearch extends JFrame implements ActionListener{
 		JButton btnSearch = new JButton("Search");
 		btnSearch.setBounds(666, 38, 81, 43);
 		contentPane.add(btnSearch);
-		btnSearch.addActionListener(this);
+		btnSearch.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				conOra();
+				datesearch(textField.getText());		
+			}
+		});
 
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(78, 177, 853, 476);
 		contentPane.add(scrollPane);
@@ -85,6 +90,12 @@ public class DateSearch extends JFrame implements ActionListener{
 				dispose();
 			}
 		});
+        
+		JButton reflash = new JButton("F5");
+		reflash.setBounds(700, 120, 50,50);
+		contentPane.add(reflash);
+		reflash.addActionListener(this);
+		
         back.setBounds(800, 38, 70, 40);
         getContentPane().add(back);
         
@@ -101,7 +112,6 @@ public class DateSearch extends JFrame implements ActionListener{
     	"이동경로\t" + "등록일\t" + "수정번호\t" + "노출여부" + "\n\n");
     	try {
     		rs = st.executeQuery(sql);
-    		System.out.println("2번 try");
     		
     				while(rs.next()) {
     					String id = rs.getString("id");
@@ -148,16 +158,7 @@ public class DateSearch extends JFrame implements ActionListener{
 			st = null;
 			st = conn.createStatement();
 			st.execute("use Observer;");
-		
 			
-//			if(e.getSource() == btnSearch) {
-//				textField.setText("");
-//				if(textField.getText().equals("")) {} 
-//				else {}			
-			
-			System.out.println("list size: " + list.size());
-			
-			System.out.println("1번 try");
 		} catch (SQLException e1) {
 			System.out.println("SQLExcption : " + e1.getMessage());
 			System.out.println("SQLState : " + e1.getSQLState());
@@ -176,12 +177,55 @@ public class DateSearch extends JFrame implements ActionListener{
 
 		
 	}
-   
+	public void datesearch(String pid) {
+   		area.setText("");
+    	area.append("연번\t" + "확진일\t" + "환자번호\t" + "국적\t" + "환자정보\t" + "지역\t" + "여행력\t" + "접촉력\t" + "조치사항\t" + "상태\t" + 
+    	"이동경로\t" + "등록일\t" + "수정번호\t" + "노출여부" + "\n\n");
+   		
+   		String sql = "select * from patient where date like '" + pid.trim() + "%%%'";
+   		
+   		try {
+   			st = conn.createStatement();
+   			rs = st.executeQuery(sql);
+   			while(rs.next()) {
+   				String id = rs.getString("id");
+				String date = rs.getString("date");
+				String pn = rs.getString("patient_number");
+				String coun = rs.getString("country");
+				String pi = rs.getString("patient_information");
+				String local = rs.getString("local");
+				String tra = rs.getString("travel");
+				String con = rs.getString("contact");
+				String act = rs.getString("actions");
+				String state = rs.getString("state");
+				String route = rs.getString("route");
+				String rd = rs.getString("registration_date");
+				String md = rs.getString("modification_date");
+				String exp = rs.getString("exposure");
+				
+				area.append(id + "\t" + date + "\t" + pn + "\t" + coun + "\t" + pi + "\t" + local + "\t" + tra + "\t" + con
+						+ "\t" + act + "\t" + state + "\t" + route + "\t" + rd + "\t" + md + "\t" + exp + "\n");
+   			}
+   		} catch(Exception e) {
+			JOptionPane.showMessageDialog(this, "오류");
+			System.out.println(e);
+			
+   		} finally {
+   			try {
+   				if(rs != null)
+   					rs.close();
+   				if(st != null)
+   					st.close();
+   				if(conn != null)
+   					conn.close();
+   			} catch (Exception e) {
+   				JOptionPane.showMessageDialog(this, "쓰레기값 날림");
+   				}
+   			}
+   		}
     
      public static void main(String[] args) {
     	 DateSearch frame = new DateSearch();
     	 frame.setVisible(true);
      }
-
-
 }

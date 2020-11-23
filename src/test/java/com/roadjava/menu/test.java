@@ -40,6 +40,11 @@ public class test extends JPanel implements ActionListener{
 		contentPane = new JPanel();
 		btnSearch = new JButton();
 		
+		JButton reflash = new JButton("F5");
+		reflash.setBounds(700, 120, 50,50);
+		contentPane.add(reflash);
+		reflash.addActionListener(this);
+		
 		contentPane.add(btnSearch);
 		
 		area = new JTextArea();
