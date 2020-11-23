@@ -10,6 +10,9 @@ import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import com.main.menu;
+
 import javax.swing.JLabel;
 
 import java.awt.Choice;
@@ -17,14 +20,16 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LocalSearch extends JFrame {
 		
 		private JPanel contentPane;
 		private JTextField textField;
 		private JTable table;
-		
-			
+		private JButton back;
+	
 		public LocalSearch() {
 			setTitle("지역 검색");
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,7 +50,7 @@ public class LocalSearch extends JFrame {
 			
 			Container c = getContentPane();
 			
-			String[] korea = {"대한민국", "서울", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"};
+			String[] korea = {"", "", "", "", "", "", "", "", "", "", ""};
 //			final ImageIcon[] koreaImage = {new ImageIcon("koreaimages/남한 사진.jpg"), new ImageIcon("koreaimages/서울.jpg"),
 //					new ImageIcon("koreaimages/경기도.jpg"), new ImageIcon("koreaimages/강원도.jpg"), new ImageIcon("koreaimages/충청북도.jpg"), 
 //					new ImageIcon("koreaimages/충청남도.jpg"), new ImageIcon("koreaimages/전라북도.jpg"), new ImageIcon("koreaimages/전라남도.jpg"),
@@ -63,16 +68,21 @@ public class LocalSearch extends JFrame {
 //				}
 //			});
 			
-			c.add(SearchLocalComboBox);
+//			c.add(SearchLocalComboBox);
 //			c.add(koreaImageLabel);
-			
-			SearchLocalComboBox.setBounds(800, 38, 81, 43);
-			SearchLocalComboBox.setVisible(true);
+//			
+//			SearchLocalComboBox.setBounds(800, 38, 81, 43);
+//			SearchLocalComboBox.setVisible(true);
 			
 			JScrollPane scrollPane = new JScrollPane();
 			scrollPane.setBounds(14, 124, 947, 551);
 			contentPane.add(scrollPane);
 			
+			back = new JButton("back");
+		    back.setBounds(800, 38, 70, 40);
+		    contentPane.add(back);
+			
+		    
 			table = new JTable();
 			table.setModel(new DefaultTableModel(
 				new Object[][] {
@@ -87,9 +97,19 @@ public class LocalSearch extends JFrame {
 			LocalLabel.setFont(new Font("함초롬돋움", Font.BOLD, 30));
 			LocalLabel.setBounds(119, 28, 151, 70);
 			contentPane.add(LocalLabel);
+
+			back.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
+			setVisible(true);
 		}
+		
+		
 		 public static void main(String[] args) {
 			 LocalSearch frame = new LocalSearch();
-			frame.setVisible(true);
+			 frame.setVisible(true);
 	     }
 	}

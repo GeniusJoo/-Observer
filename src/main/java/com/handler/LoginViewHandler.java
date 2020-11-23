@@ -3,8 +3,8 @@ package com.handler;
 import com.dao.ManagerService;
 import com.dao.impl.ManagerServiceImpl;
 import com.entity.Manager;
+import com.main.menu;
 import com.view.LoginView;
-import com.view.MainView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -37,6 +37,7 @@ public class LoginViewHandler extends KeyAdapter implements ActionListener {
 	}
 
 	private void login() {
+
 		String userName = loginView.getUserNameJTextField().getText();
 		char[] password = loginView.getPwdJPasswordField().getPassword();
 		String pwd = new String(password);
@@ -47,8 +48,11 @@ public class LoginViewHandler extends KeyAdapter implements ActionListener {
 		manager.setPassword(pwd);
 		boolean flag = managerService.login(manager);
 		if (flag) {
-			new MainView();
+//			new menu();
+			menu me = new menu();
+			me.setVisible(true);
 			loginView.getjFrame().dispose();
+			
 		} else {
 			JOptionPane.showMessageDialog(loginView.getjFrame(), "password is wrong!");
 		}

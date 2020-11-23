@@ -16,11 +16,11 @@ import java.net.URL;
  * Remark:
  */
 public class LoginView {
-	// 定义登录界面的组件
-	// 北部
+	// 定义登录界面的组件 로그인 인터페이스를 정의하는 모듈입니다.
+	// 北部 상단
 	private JLabel titleJLabel = new JLabel("Observer",SwingConstants.CENTER);
 
-	// 中部
+	// 中部 중단
 	private JLabel userNameJLabel = new JLabel("ID:");
 	private JTextField userNameJTextField = new JTextField();
 
@@ -35,19 +35,19 @@ public class LoginView {
 
 	private JFrame jFrame = new JFrame("Observer");
 
-	// 托盘
+	// 托盘 트레이를 받쳐준다?
 	private TrayIcon trayIcon;
 	private SystemTray systemTray;
 
 	private LoginViewHandler loginViewHandler;
 	public LoginView( ) {
 		loginViewHandler  = new LoginViewHandler(this);
-		// 北部
+		// 北部 상단
 		Font font = new Font("楷体", Font.PLAIN, 40);
 		titleJLabel.setFont(font);
 		titleJLabel.setPreferredSize(new Dimension(0, 80));
 
-		// 中部
+		// 中部	중단
 		Font centerFont = new Font("微软雅黑", Font.PLAIN, 20);
 		userNameJLabel.setFont(centerFont);
 		formPanel.add(userNameJLabel);
@@ -65,7 +65,7 @@ public class LoginView {
 		resetBtn.setFont(centerFont);
 		formPanel.add(loginBtn);
 		formPanel.add(resetBtn);
-		// 设置各个组件的弹簧布局位置
+		// 设置各个组件的弹簧布局位置 각 모듈의 스프
 
 		// 设置用户这一行
 		Spring childrenWidth = Spring.sum(Spring.sum(Spring.width(userNameJLabel),
@@ -160,6 +160,10 @@ public class LoginView {
 		return userNameJTextField;
 	}
 
+//	public JTextField getPwdJPasswordField() {
+//		return pwdJPasswordField;
+//	}
+	
 	public JPasswordField getPwdJPasswordField() {
 		return pwdJPasswordField;
 	}
