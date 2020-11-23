@@ -2,9 +2,7 @@ package com.main;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,12 +10,8 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import com.event.Hospital;
 import com.event.Review;
@@ -156,14 +150,14 @@ public class menu extends JFrame implements ActionListener	{
 		ImageIcon img3 = new ImageIcon("koreaimages/부가기능3.png");
 		ImageIcon img4 = new ImageIcon("koreaimages/부가기능4.png");
 		//부가기능 이미지 버튼 4개 추가
-		JButton b1 = new JButton("", img1);
+		JButton b1 = new JButton("안전수칙", img1);
 		b1.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Safe();
 			}
 		});
-		JButton b2 = new JButton("", img2);
+		JButton b2 = new JButton("근처 병원 찾기", img2);
 		b2.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -171,14 +165,14 @@ public class menu extends JFrame implements ActionListener	{
 				
 			}
 		});
-		JButton b3 = new JButton("", img3);
+		JButton b3 = new JButton("자가 문진표", img3);
 		b3.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Self();
 			}
 		});
-		JButton b4 = new JButton("", img4);
+		JButton b4 = new JButton("완치자 후기", img4);
 		b4.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {

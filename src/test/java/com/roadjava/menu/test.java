@@ -1,27 +1,8 @@
-package com.search;
+package com.roadjava.menu;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.table.DefaultTableModel;
-
-import com.main.menu;
-import com.utils.DBUtil;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -30,75 +11,53 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class DateSearch extends JFrame implements ActionListener{
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
+import com.utils.DBUtil;
+
+public class test extends JPanel implements ActionListener{
+	
 	private JPanel contentPane;
-    private JTextField textField;
-    private JButton back;
-    private JTextArea area;
-    
-    ArrayList<String> list = new ArrayList<>(); 
+	private JTextArea area;
+	private JButton btnSearch;
 
-    Connection conn;
+	Connection conn;
 	Statement st;
 	PreparedStatement ps;
 	ResultSet rs;
 	
-    /**
-     * Create the frame.
-     */
-    public DateSearch() {
-    	
-		setTitle("DATE 검색");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(50, 50, 993, 734);
+	public test() {
+		this.setLayout(new BorderLayout());
+		
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		btnSearch = new JButton();
 		
-	    JLabel lblNewLabel = new JLabel("D A T A");
-	    lblNewLabel.setFont(new Font("함초롬돋움", Font.BOLD, 30));
-	    lblNewLabel.setBounds(119, 27, 151, 70);
-	    contentPane.add(lblNewLabel);
-		
-		textField = new JTextField();
-		textField.setBounds(284, 38, 345, 43);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JButton btnSearch = new JButton("Search");
-		btnSearch.setBounds(666, 38, 81, 43);
 		contentPane.add(btnSearch);
-		btnSearch.addActionListener(this);
-
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(78, 177, 853, 476);
+		area = new JTextArea();
+		JScrollPane scrollPane = new JScrollPane(area);
 		contentPane.add(scrollPane);
 
-           
-        back = new JButton("back");
-        back.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-        back.setBounds(800, 38, 70, 40);
-        getContentPane().add(back);
-        
-		area = new JTextArea();
-		area.setBounds(51, 153, 869, 470);
-		scrollPane.setViewportView(area);
+		this.add("Center", area);
+		this.add("North", contentPane);
+		
+		btnSearch.addActionListener(this);
+		
+	}
 
-        setVisible(true);      
-    }
-    
+	
     public void full_print(String sql) {
     	area.setText("");
     	area.append("연번\t" + "확진일\t" + "환자번호\t" + "국적\t" + "환자정보\t" + "지역\t" + "여행력\t" + "접촉력\t" + "조치사항\t" + "상태\t" + 
-    	"이동경로\t" + "등록일\t" + "수정번호\t" + "노출여부" + "\n\n");
+    	"이동경로\t" + "등록일\t" + "수정번호\t" + "노출여부\n\n");
     	try {
     		rs = st.executeQuery(sql);
     		System.out.println("2번 try");
@@ -121,6 +80,7 @@ public class DateSearch extends JFrame implements ActionListener{
     					
     					area.append(id + "\t" + date + "\t" + pn + "\t" + coun + "\t" + pi + "\t" + local + "\t" + tra + "\t" + con
     							+ "\t" + act + "\t" + state + "\t" + route + "\t" + rd + "\t" + md + "\t" + exp + "\n");
+    					
     				}
     			} catch(Exception e) {
     				JOptionPane.showMessageDialog(this, "오류");
@@ -155,7 +115,6 @@ public class DateSearch extends JFrame implements ActionListener{
 //				if(textField.getText().equals("")) {} 
 //				else {}			
 			
-			System.out.println("list size: " + list.size());
 			
 			System.out.println("1번 try");
 		} catch (SQLException e1) {
@@ -171,17 +130,51 @@ public class DateSearch extends JFrame implements ActionListener{
 		conOra();
 		
 		String sql = "select * from patient";
-
-		full_print(sql);
-
+		
+		if(e.getSource() == btnSearch) {
+			
+			full_print(sql);
+		}
 		
 	}
-   
-    
-     public static void main(String[] args) {
-    	 DateSearch frame = new DateSearch();
-    	 frame.setVisible(true);
-     }
-
-
+	public static void fm() {
+		JFrame frame = new JFrame("gg");
+		
+		test tt = new test();
+		frame.getContentPane().add(tt,"Center");
+		frame.setSize(320, 500);
+		frame.setLocation(200, 200);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		fm();
+	}
 }
+
+//String[] korea = {"", "", "", "", "", "", "", "", "", "", ""};
+//final ImageIcon[] koreaImage = {new ImageIcon("koreaimages/남한 사진.jpg"), new ImageIcon("koreaimages/서울.jpg"),
+//		new ImageIcon("koreaimages/경기도.jpg"), new ImageIcon("koreaimages/강원도.jpg"), new ImageIcon("koreaimages/충청북도.jpg"), 
+//		new ImageIcon("koreaimages/충청남도.jpg"), new ImageIcon("koreaimages/전라북도.jpg"), new ImageIcon("koreaimages/전라남도.jpg"),
+//		new ImageIcon("koreaimages/경상북도.jpg"), new ImageIcon("koreaimages/경상남도.jpg"), new ImageIcon("koreaimages/제주도.jpg") 
+//		};
+//final JLabel koreaImageLabel = new JLabel(koreaImage[0]);
+
+//JComboBox SearchLocalComboBox = new JComboBox(korea);
+
+//SearchLocalComboBox.addActionListener(new ActionListener() {
+//	public void actionPerformed(ActionEvent e) {
+//		JComboBox findComboBox = (JComboBox)e.getSource();
+//		int index = findComboBox.getSelectedIndex();
+//		koreaImageLabel.setIcon(koreaImage[index]);	
+//	}
+//});
+
+//c.add(SearchLocalComboBox);
+//c.add(koreaImageLabel);
+//
+//SearchLocalComboBox.setBounds(800, 38, 81, 43);
+//SearchLocalComboBox.setVisible(true);
