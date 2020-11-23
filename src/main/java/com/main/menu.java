@@ -2,7 +2,9 @@ package com.main;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,19 +12,33 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import com.event.Hospital;
+import com.event.Review;
+import com.event.Safe;
+import com.event.Self;
 import com.search.DateSearch;
 import com.search.LocalSearch;
 import com.search.PatientSearch;
 
+
 public class menu extends JFrame implements ActionListener	{
 
-	CardLayout layout;	//ī�巹�̾ƿ����� �ֱ��ȭ��, �ΰ���� ȭ�� ��ȯ���� 
+	CardLayout layout;	
 	
 	private JButton area = new JButton();
 	private JButton date = new JButton();
 	private JButton search = new JButton();
+	private JButton b1 = new JButton();
+	private JButton b2 = new JButton();
+	private JButton b3 = new JButton();
+	private JButton b4 = new JButton();
 	
 	private JPanel first = new JPanel(new BorderLayout());
 	private JPanel fuction = new JPanel(new FlowLayout());
@@ -36,53 +52,9 @@ public class menu extends JFrame implements ActionListener	{
 		layout= new CardLayout();	//카드 레이아웃 할당
 		setLayout(layout);	//메인 프레임 카드 레이아웃으로 설정
 		
-		/*화면에 메뉴판 추가 시작 필요없으니 주석 처리
-		JMenuItem item;	//메뉴 아이템
-		
-		JMenuBar mb = new JMenuBar();	//메뉴바
-		
-		JMenu m1 = new JMenu("확진자");	//주메뉴1
-		JMenu m2 = new JMenu("완치자");	//주메뉴2
-		JMenu m3 = new JMenu("화면 이동");	//주메뉴3
-		
-		//확진자 메뉴에 부메뉴(아이템) 추가
-		item = new JMenuItem("file");
-		item.addActionListener(this);
-		m1.add(item);
-		item = new JMenuItem("today");
-		item.addActionListener(this);
-		m1.add(item);
-		m1.addSeparator();
-		m1.add(new JMenuItem("종료"));
-		//완치자 메뉴에 부메뉴(아이템) 추가
-		item = new JMenuItem("review");
-		item.addActionListener(this);
-		m2.add(item);
-		item = new JMenuItem("number");
-		item.addActionListener(this);
-		m2.add(item);
-		m2.addSeparator();
-		m2.add(new JMenuItem("종료"));
-		//화면 이동 메뉴에 부메뉴(아이템) 추가
-		item = new JMenuItem("main");
-		item.addActionListener(this);
-		m3.add(item);
-		item = new JMenuItem("sub");
-		item.addActionListener(this);
-		m3.add(item);
-		m3.addSeparator();
-		m3.add(new JMenuItem("종료"));
-		//부메뉴 추가 끝
-		mb.add(m1);	//메뉴판에 주메뉴1 부착
-		mb.add(m2);	//메뉴판에 주메뉴2 부착
-		mb.add(m3);	//메뉴판에 주메뉴3 부착
-		setJMenuBar(mb);	//메뉴판 부착
-		화면에 메뉴판 추가 끝 */
-		
 		setMainmenu();	//메인기능 화면 구성 추가
 		setSubmenu();	//서브기능 화면 구성 추가
-
-		
+	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//종료 셋팅
 		setSize(890,550);	//절대 크기 조절 이미지 파일 때문에 필수
 //		setVisible(true);	//항상 보여질 것 
@@ -185,9 +157,34 @@ public class menu extends JFrame implements ActionListener	{
 		ImageIcon img4 = new ImageIcon("koreaimages/부가기능4.png");
 		//부가기능 이미지 버튼 4개 추가
 		JButton b1 = new JButton("", img1);
+		b1.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Safe();
+			}
+		});
 		JButton b2 = new JButton("", img2);
+		b2.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Hospital();
+				
+			}
+		});
 		JButton b3 = new JButton("", img3);
+		b3.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Self();
+			}
+		});
 		JButton b4 = new JButton("", img4);
+		b4.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Review();
+			}
+		});
 		//메인화면 전환 버튼 추가
 		JButton previousButton = new JButton("이전으로");
 		//메인화면 전환버튼 클릭시 리스너를 이용해 화면 전환
