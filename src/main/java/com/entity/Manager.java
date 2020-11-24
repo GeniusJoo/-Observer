@@ -1,10 +1,5 @@
 package com.entity;
 
-/**
- * Author: XianDaLi
- * Date: 2020/10/17 18:19
- * Remark:
- */
 public class Manager {
 	private int id;
 	private String name;

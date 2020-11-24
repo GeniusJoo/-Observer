@@ -19,8 +19,6 @@ public class Review extends JFrame
 		 setVisible(true);	//항상 보여질 것 
 	 }
 	public class ReviewPanel extends JPanel	
-	//menu()에 ReviewPanel review= new ReviewPanel();
-	//add("5",review); 필요
 	{
 		ReviewPanel(){
 			super(new BorderLayout());

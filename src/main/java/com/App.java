@@ -1,6 +1,6 @@
 package com;
 
-import com.view.LoginView;
+import com.login.LoginView;
 
 /**
  * Author: XianDaLi
@@ -9,7 +9,7 @@ import com.view.LoginView;
  */
 public class App {
 	public static void main(String[] args) {
-		
+		//모든 기능의 시작
 		new LoginView();
 	}
 }

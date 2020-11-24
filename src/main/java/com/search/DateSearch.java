@@ -48,7 +48,7 @@ public class DateSearch extends JFrame implements ActionListener{
      */
     public DateSearch() {
     	
-		setTitle("DATE 검색");
+		setTitle("DATE 검색");									// 패널 생성 및 크기 조절
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 50, 993, 734);
 		contentPane = new JPanel();
@@ -56,34 +56,34 @@ public class DateSearch extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-	    JLabel lblNewLabel = new JLabel("D A T E");
+	    JLabel lblNewLabel = new JLabel("D A T E");				// 라벨 생성
 	    lblNewLabel.setFont(new Font("함초롬돋움", Font.BOLD, 30));
 	    lblNewLabel.setBounds(119, 27, 151, 70);
 	    contentPane.add(lblNewLabel);
 		
-		textField = new JTextField();
+		textField = new JTextField();							// 검색 필드
 		textField.setBounds(284, 38, 345, 43);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnSearch = new JButton("Search");
+		JButton btnSearch = new JButton("Search");				// 검색 반응 버튼
 		btnSearch.setBounds(666, 38, 81, 43);
 		contentPane.add(btnSearch);
 		btnSearch.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				conOra();
-				datesearch(textField.getText());		
+				conOra();										// DB 연동 후
+				datesearch(textField.getText());				// 텍스트 필드에 입력한 값 넘김
 			}
 		});
 
-		JScrollPane scrollPane = new JScrollPane();
+		JScrollPane scrollPane = new JScrollPane();				// 스크롤생성
 		scrollPane.setBounds(78, 177, 853, 476);
 		contentPane.add(scrollPane);
 
            
-        back = new JButton("back");
+        back = new JButton("back");								// 화면으로 나가기 위한 버튼 생성
         back.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -91,22 +91,22 @@ public class DateSearch extends JFrame implements ActionListener{
 			}
 		});
         
-		JButton reflash = new JButton("F5");
-		reflash.setBounds(700, 120, 50,50);
+		JButton reflash = new JButton("F5");					// 확진자 디폴트 정보를 불러오기 위한 버튼
+		reflash.setBounds(666, 120, 50,50);
 		contentPane.add(reflash);
 		reflash.addActionListener(this);
 		
-        back.setBounds(800, 38, 70, 40);
+        back.setBounds(800, 38, 81, 43);
         getContentPane().add(back);
         
-		area = new JTextArea();
+		area = new JTextArea();									// 확진자 정보를 띄우기 위한 필드
 		area.setBounds(51, 153, 869, 470);
 		scrollPane.setViewportView(area);
 
         setVisible(true);      
     }
     
-    public void full_print(String sql) {
+    public void full_print(String sql) {						// 확진자 정보 표시
     	area.setText("");
     	area.append("연번\t" + "확진일\t" + "환자번호\t" + "국적\t" + "환자정보\t" + "지역\t" + "여행력\t" + "접촉력\t" + "조치사항\t" + "상태\t" + 
     	"이동경로\t" + "등록일\t" + "수정번호\t" + "노출여부" + "\n\n");
@@ -150,7 +150,7 @@ public class DateSearch extends JFrame implements ActionListener{
     	
     	
     	}
-   public void conOra() {
+   public void conOra() {									// DB 연동
 	   try {
        	conn = null;
 			conn = DriverManager.getConnection(DBUtil.URL, DBUtil.USER_NAME, DBUtil.PWD);
@@ -171,18 +171,18 @@ public class DateSearch extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		conOra();
 		
-		String sql = "select * from patient";
+		String sql = "select * from patient";				// 사용할 쿼리문
 
 		full_print(sql);
 
 		
 	}
-	public void datesearch(String pid) {
+	public void datesearch(String pid) {					// 검색시 나올 정보
    		area.setText("");
     	area.append("연번\t" + "확진일\t" + "환자번호\t" + "국적\t" + "환자정보\t" + "지역\t" + "여행력\t" + "접촉력\t" + "조치사항\t" + "상태\t" + 
     	"이동경로\t" + "등록일\t" + "수정번호\t" + "노출여부" + "\n\n");
    		
-   		String sql = "select * from patient where date like '" + pid.trim() + "%%%'";
+   		String sql = "select * from patient where date like '" + pid.trim() + "%%%'";		// 쿼리문
    		
    		try {
    			st = conn.createStatement();
@@ -224,8 +224,4 @@ public class DateSearch extends JFrame implements ActionListener{
    			}
    		}
     
-     public static void main(String[] args) {
-    	 DateSearch frame = new DateSearch();
-    	 frame.setVisible(true);
-     }
 }

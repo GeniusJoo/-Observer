@@ -77,7 +77,7 @@ public class menu extends JFrame implements ActionListener	{
 			layout.last(this.getContentPane());		//서브화면으로 이동
 			break;
 		}
-	}
+	}		// 사용하지 않음.
 	
 	public void setMainmenu() 	//메인기능 화면 구성 메소드
 	{
@@ -113,7 +113,7 @@ public class menu extends JFrame implements ActionListener	{
 			public void actionPerformed(ActionEvent e) {
 				new DateSearch();	
 			}
-		});
+		}); // 각 주 기능 버튼시 반응
 		
 		
 		//부가기능 화면 전환 버튼 추가
@@ -200,13 +200,6 @@ public class menu extends JFrame implements ActionListener	{
 		second.add(previousButton, "South");
 		//완성된 second 프레임 1번에 부착
 		add("1",second);
-		
-	}
-
-	
-	public static void main(String[] args)	//실행 코드
-	{
-		me.setVisible(true);
 		
 	}
 }

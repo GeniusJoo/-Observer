@@ -15,8 +15,6 @@ public class Safe extends JFrame {
 		 setVisible(true);	//항상 보여질 것 
 	 }
 	public class SafePanel extends JPanel
-	//menu()에 SafePanel safe= new SafePanel();
-	//add("2",safe); 필요
 	{
 		SafePanel(){
 			super(new BorderLayout());

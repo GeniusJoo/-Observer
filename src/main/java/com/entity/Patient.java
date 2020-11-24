@@ -2,11 +2,6 @@ package com.entity;
 
 import java.util.*;
 
-/**
- * Author: XianDaLi
- * Date: 2020/10/17 17:11
- * Remark:
- */
 public class Patient {
 	private int id; // 연변
 	private String date; // 확진일

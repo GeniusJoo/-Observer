@@ -1,8 +1,7 @@
-package com.view;
-
-import com.handler.LoginViewHandler;
+package com.login;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -47,7 +46,7 @@ public class LoginView {
 		titleJLabel.setFont(font);
 		titleJLabel.setPreferredSize(new Dimension(0, 80));
 
-		// 中部	중단
+		// 中部	중단 이 이하 번역 불가
 		Font centerFont = new Font("微软雅黑", Font.PLAIN, 20);
 		userNameJLabel.setFont(centerFont);
 		formPanel.add(userNameJLabel);
@@ -65,7 +64,7 @@ public class LoginView {
 		resetBtn.setFont(centerFont);
 		formPanel.add(loginBtn);
 		formPanel.add(resetBtn);
-		// 设置各个组件的弹簧布局位置 각 모듈의 스프
+		// 设置各个组件的弹簧布局位置 
 
 		// 设置用户这一行
 		Spring childrenWidth = Spring.sum(Spring.sum(Spring.width(userNameJLabel),

@@ -1,10 +1,9 @@
-package com.handler;
+package com.login;
 
 import com.dao.ManagerService;
-import com.dao.impl.ManagerServiceImpl;
+import com.dao.ManagerServiceImpl;
 import com.entity.Manager;
 import com.main.menu;
-import com.view.LoginView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,12 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-/**
- * Author: XianDaLi
- * Date: 2020/10/25 23:49
- * Remark:
- */
-public class LoginViewHandler extends KeyAdapter implements ActionListener {
+public class LoginViewHandler extends KeyAdapter implements ActionListener { //로그인의 기능적인 부분을 담당하는 클래스
 	private LoginView loginView;
 	public LoginViewHandler(LoginView loginView) {
 		this.loginView = loginView;

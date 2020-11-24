@@ -16,8 +16,6 @@ public class Self extends JFrame
 		 setVisible(true);	//항상 보여질 것 
 	 }
 	 class SelfPanel extends JPanel	
-		//menu()에 SelfPanel self= new SelfPanel();
-		//add("4",self); 필요
 		{
 			SelfPanel(){
 				super(new BorderLayout());
